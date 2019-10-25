@@ -1,12 +1,11 @@
 import { FlexPlugin} from 'flex-plugin';
-import React from 'react';
-const PLUGIN_NAME = 'SamplePlugin';
+const PLUGIN_NAME = 'DynamicsPlugin';
 const request = require("request");
 const loadjs = require("loadjs")
 
 
 
-export default class SamplePlugin extends FlexPlugin {
+export default class DynamicsPlugin extends FlexPlugin {
   constructor() {
     super(PLUGIN_NAME);
   }
@@ -32,10 +31,10 @@ export default class SamplePlugin extends FlexPlugin {
 
     function screenpop(contactno) {
         pannel(1);
-        window.Microsoft.CIFramework.searchAndOpenRecords("account", "?$select=name,telephone1&$filter=telephone1 eq '" + `${contactno}` + "'"  + "&$search=" + `${contactno}`, false).then(
+        window.Microsoft.CIFramework.searchAndOpenRecords("account", `?$select=name,telephone1&$filter=telephone1 eq '${contactno}'&$search=${contactno}`, false).then(
             function success(result) {
-                var res = JSON.parse(result);
-                console.log(`executed search`);
+                // var res = JSON.parse(result);
+                console.log("executed search");
               },
             function (error) {
                 console.log(error.message);
@@ -44,7 +43,7 @@ export default class SamplePlugin extends FlexPlugin {
     }
 
     manager.workerClient.on("reservationCreated", function(reservation) {
-      if(reservation.task.attributes.direction != 'outbound') {
+      if(reservation.task.attributes.direction !== 'outbound') {
       var contactno = `${reservation.task.attributes.from}`; // The contact number to be searched
       screenpop(contactno)
     } else {

@@ -1,4 +1,4 @@
 import * as FlexPlugin from 'flex-plugin';
-import SamplePlugin from './SamplePlugin';
+import DynamicsPlugin from './DynamicsPlugin';
 
-FlexPlugin.loadPlugin(SamplePlugin);
+FlexPlugin.loadPlugin(DynamicsPlugin);

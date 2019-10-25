@@ -5,7 +5,7 @@ import { Actions } from '../../states/CustomTaskListState';
 import CustomTaskList from './CustomTaskList';
 
 const mapStateToProps = (state) => ({
-    isOpen: state.sample.customTaskList.isOpen,
+    isOpen: state.dynamics.customTaskList.isOpen,
 });
 
 const mapDispatchToProps = (dispatch) => ({
