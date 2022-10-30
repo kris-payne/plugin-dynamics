@@ -17,7 +17,7 @@ export default class DynamicsPlugin extends FlexPlugin {
     loadjs('https://twilioaus.crm6.dynamics.com/webresources/Widget/msdyn_ciLibrary.js', 'CIF')
     loadjs.ready('CIF', function() {
       window.Microsoft.CIFramework.addHandler("onclicktoact", function() {
-        request.post("https://brass-chicken-6161.twil.io/call2");
+        request.post("https://rosewood-walrus-1746.twil.io/call");
       });
 
 

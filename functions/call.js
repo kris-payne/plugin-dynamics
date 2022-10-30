@@ -1,11 +1,11 @@
 exports.handler = function(context, event, callback) {
   const client = context.getTwilioClient();
   const taskrouterService = client.taskrouter.v1.workspaces(context.TWILIO_WORKSPACE_SID);
-  const outboundNumber = '61424626630'
+  const outboundNumber = context.dialledNumber
 
   const attrs = {
           identity: outboundNumber,
-          from: outboundNumber,
+          from: context.fromNumber,
           to: outboundNumber,
           direction: "outbound",
           autoAnswer: "true"
@@ -28,6 +28,4 @@ exports.handler = function(context, event, callback) {
             console.error(`Task creation failed ${err}`);
             callback(err);
           });
-      }
-    });
 };
