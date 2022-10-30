@@ -44,7 +44,7 @@ export default class DynamicsPlugin extends FlexPlugin {
 
     manager.workerClient.on("reservationCreated", function(reservation) {
       if(reservation.task.attributes.direction !== 'outbound') {
-      var contactno = `${reservation.task.attributes.from}`; // The contact number to be searched
+      var contactno = `${reservation.task.attributes.from}`; // The contact phone number to be searched 
       screenpop(contactno)
     } else {
     pannel(1);
